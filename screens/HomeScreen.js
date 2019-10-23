@@ -10,22 +10,28 @@ import {
   View,
   ImageBackground
 } from 'react-native';
-
+import Header from '../components/Header';
 import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen() {
+export default class HomeScreen extends React.Component {
+  static navigationOptions = {
+    // headerTitle instead of title
+    headerTitle: () => <Header />,
+  };
+  render() {
   return (
     <View style={styles.container}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
+    <Header />
         <ImageBackground source={{ uri: 'https://cdn.shopify.com/s/files/1/0504/6041/products/NaturalWoodgrain_large.jpg?v=1409190514' }} style={{ width: '100%', height: '100%' }}>
           <View style={styles.welcomeContainer}>
             <Image
               source={
                 __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
+                ? require('../assets/images/robot-dev.png')
+                : require('../assets/images/robot-prod.png')
               }
               style={styles.welcomeImage}
             />
@@ -70,6 +76,7 @@ export default function HomeScreen() {
       {/* </ImageBackground> */}
     </View>
   );
+}
 }
 
 HomeScreen.navigationOptions = {
