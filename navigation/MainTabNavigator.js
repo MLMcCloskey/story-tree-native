@@ -78,7 +78,7 @@ const RecordStack = createStackNavigator(
 RecordStack.navigationOptions = {
   tabBarLabel: 'Record',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-recording' : 'md-recording'} />
   ),
 };
 
@@ -89,8 +89,12 @@ const tabNavigator = createBottomTabNavigator({
   LinksStack,
   SettingsStack,
   RecordStack,
-});
+}, {tabBarOptions: {style: {backgroundColor: 'yellowgreen'}}} );
 
 tabNavigator.path = '';
+
+// tabNavigator.style = {backgroundColor: 'green'};
+
+// tabNavigator.tabBarOptions = {activeBackgroundColor: 'green', inactiveBackgroundColor: 'green', style: {backgroundColor: 'green'}}
 
 export default tabNavigator;
