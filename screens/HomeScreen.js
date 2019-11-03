@@ -26,7 +26,7 @@ export default class HomeScreen extends React.Component {
         contentContainerStyle={styles.contentContainer}>
     <Header />
         <ImageBackground source={{ uri: 'https://cdn.shopify.com/s/files/1/0504/6041/products/NaturalWoodgrain_large.jpg?v=1409190514' }} style={{ width: '100%', height: '100%' }}>
-          <View style={styles.welcomeContainer}>
+          {/* <View style={styles.welcomeContainer}>
             <Image
               source={
                 __DEV__
@@ -35,7 +35,7 @@ export default class HomeScreen extends React.Component {
               }
               style={styles.welcomeImage}
             />
-          </View>
+          </View> */}
 
           <View style={styles.getStartedContainer}>
             <DevelopmentModeNotice />
