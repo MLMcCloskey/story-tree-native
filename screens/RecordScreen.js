@@ -10,5 +10,5 @@ export default function RecordScreen() {
 }
 
 RecordScreen.navigationOptions = {
-  title: 'app.json',
+  title: 'Record',
 };

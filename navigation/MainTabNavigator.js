@@ -4,9 +4,10 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import PlaylistScreen from '../screens/PlaylistScreen';
+import ListenScreen from '../screens/ListenScreen';
 import RecordScreen from '../screens/RecordScreen';
+import LibraryScreen from '../screens/LibraryScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -23,50 +24,43 @@ const HomeStack = createStackNavigator(
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-home' : 'md-home'} />
+    ),
+  };
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const PlaylistStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    PlaylistStack: PlaylistScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+PlaylistStack.navigationOptions = {
+  tabBarLabel: 'Playlist',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-musical-notes' : 'md-musical-notes'} />
   ),
 };
 
-LinksStack.path = '';
+PlaylistStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const ListenStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Listen: ListenScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+ListenStack.navigationOptions = {
+  tabBarLabel: 'Listen',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-headset' : 'md-headset'} />
   ),
 };
 
-SettingsStack.path = '';
+ListenStack.path = '';
 
 const RecordStack = createStackNavigator(
   {
@@ -78,17 +72,34 @@ const RecordStack = createStackNavigator(
 RecordStack.navigationOptions = {
   tabBarLabel: 'Record',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-mic' : 'md-mic'} />
   ),
 };
 
 RecordStack.path = '';
 
+const LibraryStack = createStackNavigator(
+  {
+    LibraryStack: LibraryScreen,
+  },
+  config
+);
+
+LibraryStack.navigationOptions = {
+  tabBarLabel: 'Library',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-list-box' : 'md-list-box'} />
+  ),
+};
+
+LibraryStack.path = '';
+
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  ListenStack,
   RecordStack,
+  PlaylistStack,
+  LibraryStack
 });
 
 tabNavigator.path = '';
