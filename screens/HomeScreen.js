@@ -8,7 +8,8 @@ import {
   Text,
   TouchableOpacity,
   View,
-  ImageBackground
+  ImageBackground,
+  Button
 } from 'react-native';
 import Header from '../components/Header';
 import { MonoText } from '../components/StyledText';
@@ -19,64 +20,53 @@ export default class HomeScreen extends React.Component {
     headerTitle: () => <Header />,
   };
   render() {
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-    <Header />
-        <ImageBackground source={{ uri: 'https://cdn.shopify.com/s/files/1/0504/6041/products/NaturalWoodgrain_large.jpg?v=1409190514' }} style={{ width: '100%', height: '100%' }}>
-          {/* <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View> */}
+    return (
+      <View style={styles.container}>
+        {/* <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}> */}
+        <Header />
+        {/* <ImageBackground source={{ uri: 'https://cdn.shopify.com/s/files/1/0504/6041/products/NaturalWoodgrain_large.jpg?v=1409190514' }} style={{ width: '100%', height: '100%' }}> */}
 
-          <View style={styles.getStartedContainer}>
-            <DevelopmentModeNotice />
+        <View
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+        >
+          <Image>
+            {/* logo */}
+          </Image>
 
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View
-              style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText>screens/HomeScreen.js</MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
+          <Text style={styles.welcomeText}>
+            WELCOME TO STORYTREE
           </Text>
-          </View>
+          
+          <ScrollView>
+            <Text style={styles.homeText}>
+              Here you and your family can record and play stories your children might listen to time and time again.
+              </Text>
+            <Text style={styles.homeText}>
+              We have included 9 stories for Free which you can listen to pre-recorded versions specifically for bedtime! These are designed to be soft and soothing to help kids get to sleep.
+              </Text>
+            <Text style={styles.homeText}>
+              You or a family member can record yourself reading these 9 classic stories as well. Just go to "Record" below and select your first story to record. Or record and save any story from your home. We've made it easy to record and store your child's story for free.
+              </Text>
+            <Text style={styles.homeText}>
+              We are working on more stories everyday so stay tuned for more!
+              </Text>
+          </ScrollView>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>
-                Help, it didn’t automatically reload!
-            </Text>
-            </TouchableOpacity>
-          </View>
-        </ImageBackground>
-      </ScrollView>
-      {/* <ImageBackground source={{ uri: 'https://cdn.shopify.com/s/files/1/0504/6041/products/NaturalWoodgrain_large.jpg?v=1409190514' }} style={{ width: '100%', height: '100%' }}> */}
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>
-            This is a tab bar. You can edit it in:
-        </Text>
-          <View
-            style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>
-              navigation/MainTabNavigator.js
-          </MonoText>
-          </View>
+          <Button title="Thanks!" color='#a4f542' style={styles.thanksButton} />
+
         </View>
-      {/* </ImageBackground> */}
-    </View>
-  );
-}
+        {/* <View style={styles.getStartedContainer}>
+              <DevelopmentModeNotice />
+            </View> */}
+
+        {/* </ImageBackground> */}
+        {/* </ScrollView> */}
+      </View>
+    );
+  }
 }
 
 HomeScreen.navigationOptions = {
@@ -121,7 +111,13 @@ function handleHelpPress() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // flexDirection: "column",
     backgroundColor: '#fff',
+    padding: 30,
+    alignItems: "center",
+    justifyContent: 'flex-end',
+    // textAlign: 'center'
+    overflow: 'scroll',
   },
   developmentModeText: {
     marginBottom: 20,
@@ -145,26 +141,8 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginLeft: -10,
   },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
   homeScreenFilename: {
     marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
   },
   tabBarInfoContainer: {
     position: 'absolute',
@@ -194,15 +172,19 @@ const styles = StyleSheet.create({
   navigationFilename: {
     marginTop: 5,
   },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
+  welcomeText: {
+    fontSize: 18,
+    paddingBottom: 30
   },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
+  homeText: {
     fontSize: 14,
-    color: '#2e78b7',
+    color: '#666',
+    flex: 1,
+    textAlign: 'center',
+    marginBottom: 20,
   },
+  thanksButton: {
+    // color: '#72f542'
+    borderRadius: 20
+  }
 });
